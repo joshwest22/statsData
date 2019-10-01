@@ -7150,6 +7150,11 @@ var classroom = [
         grade: 86,
         max: 100
       }
+        
+    
     ]
   }
 ]
+
+var quizmean= Function(quiz)
+{classroom.quizes}
