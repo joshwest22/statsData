@@ -62,7 +62,7 @@ report("#A3",answer)
 <h3>Find the mean quiz score of each penguins.  Use one line of "code"</h3>
 <script>
 var answer= classroom.map(answer);
-;
+
 report("#A4",answer)    
 </script>
     </div>
@@ -80,7 +80,11 @@ report("#A5",answer)
 <div id="A6">
 <h3>Create a function that takes a penguin object and returns an object that contains one attribute, the picture of that penguin</h3>
 <script>
-var answer="please complete";
+var answer= function(penguin)
+{
+    return penguin.picture;
+    
+}
 report("#A6",answer)    
 </script>
     </div>
@@ -89,7 +93,19 @@ report("#A6",answer)
 <h3>Expand your function from the last one, so that the object it returns not only has a picture attribute, but also new attribute called quizMean, which is the mean of that penguins quiz scores</h3>
 <script>
 //be sure to test your function out.
-var answer="please complete";
+var answer= function(penguin)
+{
+    return penguin.picture;
+
+}
+
+var 
+
+var quizMean= {Quizmean:mean(penguin)};
+    
+}
+    
+
 report("#A7",answer)    
 </script>
     </div>
@@ -97,7 +113,7 @@ report("#A7",answer)
 <div id="A8">
 <h3>With one line of code, return a list of objects that contain the picture and meanQuiz grade of all penguins</h3>
 <script>
-var answer="please complete";
+var answer= answer(classroom) ;
 report("#A8",answer)    
 </script>
     </div>
@@ -112,7 +128,16 @@ report("#A8",answer)
         <li>finalGrade</li>
     </ul>
 <script>
-var answer="please complete";
+var answer= function(classroom)
+{
+    
+var folder= {""}
+    
+    
+}
+
+
+;
 report("#A9",answer)    
 </script>
     </div>
@@ -157,7 +182,7 @@ report("#A10",answer)
 <h3>Write a function to find the average grade of all students on the first quiz.</h3>
     <p>Here is what you should get.=6.217391304347826</p>
 <script>
-var answer="Please Complete";
+var answer= d3.mean(classroom.quizes[0].grade);
 report("#C1",answer)    
 </script>
     </div>
