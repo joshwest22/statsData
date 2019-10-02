@@ -48,11 +48,10 @@ report("#A2",answer)
 <div id="A3">
 <h3>Create a function to find the mean of the quiz grades for a given penguin.</h3>
 <script>
-var answer= function(penguin)
-{ return d3.mean(penguin.quizes.map(getGrade));
- 
+var getMean= function(penguin)
+{ 
+    return d3.mean(penguin.quizes.map(getGrade));
 }
-
 
 report("#A3",answer)    
 </script>
@@ -61,7 +60,7 @@ report("#A3",answer)
 <div id="A4">
 <h3>Find the mean quiz score of each penguins.  Use one line of "code"</h3>
 <script>
-var answer= classroom.map(answer);
+var getEachScore = classroom.map(getMean);
 
 report("#A4",answer)    
 </script>
@@ -70,7 +69,7 @@ report("#A4",answer)
 <div id="A5">
 <h3>Find the mean of all the quiz score of the class. </h3>
 <script>
-var answer= d3.mean(answer);
+var classScore = d3.mean(getEachScore);
 report("#A5",answer)    
 </script>
     </div>
