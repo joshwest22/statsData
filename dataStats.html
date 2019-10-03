@@ -53,7 +53,7 @@ var getMean= function(penguin)
     return d3.mean(penguin.quizes.map(getGrade));
 }
 
-report("#A3",answer)    
+report("#A3",getMean)    
 </script>
 </div>
 
@@ -62,7 +62,7 @@ report("#A3",answer)
 <script>
 var getEachScore = classroom.map(getMean);
 
-report("#A4",answer)    
+report("#A4",getEachScore)    
 </script>
     </div>
 
@@ -70,7 +70,7 @@ report("#A4",answer)
 <h3>Find the mean of all the quiz score of the class. </h3>
 <script>
 var classScore = d3.mean(getEachScore);
-report("#A5",answer)    
+report("#A5",classScore)    
 </script>
     </div>
     
@@ -85,7 +85,7 @@ var getPicObj = function(penguin)
     var obj = {picture: penguin.picture};
     return obj; 
 }
-report("#A6",answer)    
+report("#A6",getPicObj)    
 </script>
     </div>
 
@@ -99,15 +99,15 @@ var getPicQuizMean = function(penguin)
     return quizMean;
 }    
 
-report("#A7",answer)    
+report("#A7",getPicQuizMean)    
 </script>
     </div>
 
 <div id="A8">
 <h3>With one line of code, return a list of objects that contain the picture and meanQuiz grade of all penguins</h3>
 <script>
-var getAllPicQuiz = answer(classroom) ;
-report("#A8",answer)    
+var getAllPicQuiz = classroom.map(getPicQuizMean);
+report("#A8",getAllPicQuiz)    
 </script>
     </div>
 
@@ -121,25 +121,26 @@ report("#A8",answer)
         <li>finalGrade</li>
     </ul>
 <script>
-var answer= function(classroom)
+var getProfile= function(penguin)
 {
     
-var folder= {""}
-    
-    
-}
-
-
-;
-report("#A9",answer)    
+var folder= {picture: penguin.picture,
+            quizMean:d3.mean(penguin.quizes, getGrade),
+             testMean: d3.mean(penguin.test, getGrade),
+             hwMean: d3.mean(penguin.homework, getGrade),
+             finalGrade: penguin.final[0].grade
+            };
+    return folder;  
+};
+report("#A9",getProfile)    
 </script>
     </div>
 
 <div id="A10">
 <h3>With one line of code, return a list of objects where each objects contains all of the summary info about each penguin.</h3>
 <script>
-var answer="please complete";
-report("#A10",answer)    
+var showProfiles= classroom.map(getProfile);
+report("#A10",showProfiles)    
 </script>
     </div>
     
@@ -157,8 +158,17 @@ report("#A10",answer)
 <h3>Write a function that takes the classroom data and returns an array of objects.  Each object will have two attributes: a picture and the final grade in the class.</h3>
     
 <script>
-
-    report("#B1",answer);
+var classView = function(penguin)
+{
+    var obj = {picture: penguin.picture,
+               totalGrade: penguin.final[0].grade * .35
+                + d3.mean(penguin.test, getGrade) * .3
+                + d3.mean(penguin.quizes, getGrade) * .2 
+                + d3.mean(penguin.homework, getGrade) * .15};
+    return obj;
+}
+var overview = classroom.map(classView)
+    report("#B1",overview);
 </script>
     </div>
     
@@ -175,8 +185,17 @@ report("#A10",answer)
 <h3>Write a function to find the average grade of all students on the first quiz.</h3>
     <p>Here is what you should get.=6.217391304347826</p>
 <script>
-var answer= d3.mean(classroom.quizes[0].grade);
-report("#C1",answer)    
+var firstQuiz = function(penguin)
+{ 
+    var firstGiven = function(penguin)
+    {
+        penguin.quizes[0].grade
+    };
+    var classArray = classroom.map(firstGiven);
+    var classMean = d3.mean(classArray);
+return classMean;
+}
+report("#C1",classMean)    
 </script>
     </div>
     
