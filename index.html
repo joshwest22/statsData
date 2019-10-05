@@ -1,45 +1,31 @@
 <html>
 <body>
-<h1> Solutions to A1-A5</h1>
-<p> 
-<h3>Create a function to get the grade from a quiz object
-</h3>
-    <p>We called our identifier "getGrade". We called our parameter quiz and returned the grade attribute of the object quiz.</p>
-<pre>
- var getGrade = function(quiz)
- {
-    return quiz.grade;
- }
+<h1> Solutions to B1 &amp; C1</h1>
+    <h3>Josh West & Abby Wheelis</h3>
+<p>
+<h3>Write a function that takes the classroom data and returns an array of objects.  Each object will have two attributes: a picture and the final grade in the class.</h3>
     
-var answer=getGrade; 
- </pre>   
-</p>
-<p>
-<p>We called our identifier "getMean" because we were trying to get the mean of all the quizzes. We went to the first penguin and then its quizzes and then used our previous function to get the grades. Then we used d3.mean to get the mean of those grades.</p>
 <pre>
-var getMean= d3.mean(classroom[0].quizes.map(getGrade));
-</pre>
-</p>
-<p>
-<p>We called identifier answer and we called the funtion parameter "penguin". We wanted to return the mean of all the quiz grades from a given penguin.</p>
-<pre>
-var answer= function(penguin)
-{ 
-    return d3.mean(penguin.quizes.map(getGrade));
+var classView = function(penguin)
+{
+    var obj = {picture: penguin.picture,
+               totalGrade: penguin.final[0].grade * .35
+                + d3.mean(penguin.test, getGrade) * .3
+                + d3.mean(penguin.quizes, getGrade) * .2 
+                + d3.mean(penguin.homework, getGrade) * .15};
+    return obj;
 }
+var overview = classroom.map(classView)
 </pre>
 </p>
-<p>
-<p>We called our identifier answer and we used the function from the previous question to get the mean of each penguin.</p>
-<pre>
-var getEachScore= classroom.map(answer);
-</pre>
-</p>
-<p>
-<p>We found the mean of all of the penguins quiz scores by using the function from the previous question in combination with d3.mean.</p>
-<pre>
-var classScore = d3.mean(getEachScore);
-</pre>
-</p>
+<p>We used classroom.map to return an array of the results to our classView function. The classView function created and returned an object which contained a picture attribute and a totalGrade attribute.</p>
+<p>We calculated the totalGrade by using d3.mean to find the average in a given category, then multiplied the result by the given weight, then added those all together.</p>
+<h3>Write a function to find the average grade of all students on the first quiz.</h3>
+ <pre>
+ INSERT CODE HERE
+ </pre>  
+<p>INSERT EXPLANATION HERE</p>
+<br />
+<h2> <a href="day1.html">Link to A1-A5 Solutions</a></h2>
 </body>
 </html>
