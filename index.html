@@ -1,7 +1,9 @@
 <html>
+<head><link type="text/css" rel=stylesheet href="stylesheet.css"></head>
 <body>
 <h1> Solutions to B1 &amp; C1</h1>
-    <h3>Josh West & Abby Wheelis</h3>
+    <h3>Josh West &amp; Abby Wheelis</h3>
+<div class="B1">
 <p>
 <h3>Write a function that takes the classroom data and returns an array of objects.  Each object will have two attributes: a picture and the final grade in the class.</h3>
     
@@ -20,11 +22,28 @@ var overview = classroom.map(classView)
 </p>
 <p>We used classroom.map to return an array of the results to our classView function. The classView function created and returned an object which contained a picture attribute and a totalGrade attribute.</p>
 <p>We calculated the totalGrade by using d3.mean to find the average in a given category, then multiplied the result by the given weight, then added those all together.</p>
+</div>
+<div class="C1">
 <h3>Write a function to find the average grade of all students on the first quiz.</h3>
  <pre>
- INSERT CODE HERE
- </pre>  
-<p>INSERT EXPLANATION HERE</p>
+var getQuiz = function(penguin)
+{
+    //return an array of the first quizes for this penguin 
+    return penguin.quizes[0].grade
+};
+
+var getAllFirstQuiz = function(classroom)
+{
+    //return an array the first quiz grade for all penguins 
+    return classroom.map(getQuiz)
+    
+};
+    
+//average all of the grades
+var avgGrades = d3.mean(getAllFirstQuiz(classroom));
+</pre>  
+<p>We used the getQuiz function to return a given penguin's first quiz grade. Next we used the getAllFirstQuiz function to return an array of all of the penguins' first quiz grades in the class (given the classroom array). Finally, we created a variable the calculates the mean of all the elements in the array that the previous function generated.</p>
+</div>
 <br />
 <h2> <a href="day1.html">Link to A1-A5 Solutions</a></h2>
 </body>

@@ -9,10 +9,11 @@
         //print results to screen as well as the console
         var report = function(parent,answer)
         {
+            console.log("parent"+parent,answer);
             d3.select(parent)
                 .append("p")
                 .text(answer.toString());
-            console.log("parent"+parent,answer);
+           
         }
     </script>
             
@@ -185,31 +186,22 @@ var overview = classroom.map(classView)
 <h3>Write a function to find the average grade of all students on the first quiz.</h3>
     <p>Here is what you should get.=6.217391304347826</p>
 <script>
-/*var firstQuiz = function(classroom)
-{ 
-    var firstQuizGrade = function(penguin)
-    {
-        penguin.quizes[0].grade
-    };
-    var classArray = classroom.map(firstQuizGrade); // makes array of all quiz grades
-    var classMean = d3.mean(classArray); // averages all the grades in the array
-return classMean;
-}*/
-var firstQuiz = function()
+var getQuizGrade = function(penguin)
 {
-    //get the first quiz grade for all penguins
-    classroom.quizes[0].map(getGrade)
-    //average all of the grades
+    //return an array of the first quizes for this penguin (WORKS)
+    return penguin.quizes[0].grade
+};
+
+var getAllFirstQuiz = function(classroom)
+{
+    //return an array the first quiz grade for all penguins (WORKS)
+    return classroom.map(getQuizGrade)
 };
     
- var firstQuizGrade = function(penguin)
-    {
-        penguin.quizes[0].map(getGrade)
-    };
-    
-var getAllGrades = classroom.map(firstQuizGrade);
+//average all of the grades from the array in firstQuiz and print to console  
+var avgGrades = d3.mean(getAllFirstQuiz(classroom));
 
-report("#C1",getAllGrades)    
+report("#C1", avgGrades)    
 </script>
     </div>
     

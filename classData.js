@@ -7156,5 +7156,3 @@ var classroom = [
   }
 ]
 
-var quizmean= Function(quiz)
-{classroom.quizes}
